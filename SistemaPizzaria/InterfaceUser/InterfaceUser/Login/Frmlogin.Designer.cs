@@ -30,12 +30,12 @@
             this.lblusuario = new System.Windows.Forms.Label();
             this.lblsenha = new System.Windows.Forms.Label();
             this.cmbusuarios = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtsenha = new System.Windows.Forms.TextBox();
             this.btn_entrar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblpizzaria = new System.Windows.Forms.Label();
-            this.lblcopyright = new System.Windows.Forms.Label();
             this.lblversao = new System.Windows.Forms.Label();
+            this.lblcopyright = new System.Windows.Forms.Label();
+            this.lblpizzaria = new System.Windows.Forms.Label();
             this.btn_sair = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.panel1.SuspendLayout();
@@ -82,12 +82,12 @@
             this.cmbusuarios.Size = new System.Drawing.Size(191, 21);
             this.cmbusuarios.TabIndex = 3;
             // 
-            // textBox1
+            // txtsenha
             // 
-            this.textBox1.Location = new System.Drawing.Point(743, 361);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtsenha.Location = new System.Drawing.Point(743, 361);
+            this.txtsenha.Name = "txtsenha";
+            this.txtsenha.Size = new System.Drawing.Size(185, 20);
+            this.txtsenha.TabIndex = 4;
             // 
             // btn_entrar
             // 
@@ -97,6 +97,7 @@
             this.btn_entrar.TabIndex = 5;
             this.btn_entrar.Text = "Entrar";
             this.btn_entrar.UseVisualStyleBackColor = true;
+            this.btn_entrar.Click += new System.EventHandler(this.btn_entrar_Click);
             // 
             // panel1
             // 
@@ -108,15 +109,14 @@
             this.panel1.Size = new System.Drawing.Size(329, 137);
             this.panel1.TabIndex = 7;
             // 
-            // lblpizzaria
+            // lblversao
             // 
-            this.lblpizzaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblpizzaria.Location = new System.Drawing.Point(70, 14);
-            this.lblpizzaria.Name = "lblpizzaria";
-            this.lblpizzaria.Size = new System.Drawing.Size(191, 34);
-            this.lblpizzaria.TabIndex = 0;
-            this.lblpizzaria.Text = "Sistema Pizzaria";
-            this.lblpizzaria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblversao.AutoSize = true;
+            this.lblversao.Location = new System.Drawing.Point(106, 66);
+            this.lblversao.Name = "lblversao";
+            this.lblversao.Size = new System.Drawing.Size(111, 13);
+            this.lblversao.TabIndex = 2;
+            this.lblversao.Text = "Versão: {0}.{1}.{2}.{3}";
             // 
             // lblcopyright
             // 
@@ -127,14 +127,15 @@
             this.lblcopyright.TabIndex = 1;
             this.lblcopyright.Text = "copyright © Winilson de Paula (WS SISTEMAS)";
             // 
-            // lblversao
+            // lblpizzaria
             // 
-            this.lblversao.AutoSize = true;
-            this.lblversao.Location = new System.Drawing.Point(106, 66);
-            this.lblversao.Name = "lblversao";
-            this.lblversao.Size = new System.Drawing.Size(111, 13);
-            this.lblversao.TabIndex = 2;
-            this.lblversao.Text = "Versão: {0}.{1}.{2}.{3}";
+            this.lblpizzaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblpizzaria.Location = new System.Drawing.Point(70, 14);
+            this.lblpizzaria.Name = "lblpizzaria";
+            this.lblpizzaria.Size = new System.Drawing.Size(191, 34);
+            this.lblpizzaria.TabIndex = 0;
+            this.lblpizzaria.Text = "Sistema Pizzaria";
+            this.lblpizzaria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_sair
             // 
@@ -144,6 +145,7 @@
             this.btn_sair.TabIndex = 8;
             this.btn_sair.Text = "Sair";
             this.btn_sair.UseVisualStyleBackColor = true;
+            this.btn_sair.Click += new System.EventHandler(this.btn_sair_Click);
             // 
             // Frmlogin
             // 
@@ -151,12 +153,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::InterfaceUser.Properties.Resources.fundo_login;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1059, 657);
+            this.ClientSize = new System.Drawing.Size(1055, 653);
             this.ControlBox = false;
             this.Controls.Add(this.btn_sair);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_entrar);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtsenha);
             this.Controls.Add(this.cmbusuarios);
             this.Controls.Add(this.lblsenha);
             this.Controls.Add(this.lblusuario);
@@ -182,7 +184,7 @@
         private System.Windows.Forms.Label lblusuario;
         private System.Windows.Forms.Label lblsenha;
         private System.Windows.Forms.ComboBox cmbusuarios;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtsenha;
         private System.Windows.Forms.Button btn_entrar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblversao;

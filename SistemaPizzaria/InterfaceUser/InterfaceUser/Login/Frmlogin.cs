@@ -6,6 +6,8 @@ using Entities.Sistema;
 
 namespace InterfaceUser.Login {
     public partial class Frmlogin : Form {
+
+        public bool bFlagLogin;
         public Frmlogin()
         {
             InitializeComponent();
@@ -32,6 +34,35 @@ namespace InterfaceUser.Login {
             }
 
 
+        }
+
+        private void btn_sair_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void btn_entrar_Click(object sender, EventArgs e)
+        {
+            if (cmbusuarios.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você deve selecionar o login para acessar o sistema!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (txtsenha.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você deve informar sua senha para acessar o sistema!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var item = (ComboBoxItemUsuario)cmbusuarios.SelectedItem;
+            if(item.senha != txtsenha.Text.Trim())
+            {
+                MessageBox.Show("A senha informada está incorreta!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            bFlagLogin = true;
+            this.Close();
         }
     }
 }

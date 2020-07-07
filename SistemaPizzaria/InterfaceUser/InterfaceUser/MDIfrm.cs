@@ -23,6 +23,7 @@ namespace InterfaceUser {
 
             var Frmlogin = new Frmlogin();
             Frmlogin.ShowDialog();
+            if (!Frmlogin.bFlagLogin) Application.Exit();
         }
     }
 }

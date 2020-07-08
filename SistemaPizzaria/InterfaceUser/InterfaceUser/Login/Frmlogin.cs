@@ -3,6 +3,7 @@ using Business.Pessoas;
 using System.Reflection;
 using System.Windows.Forms;
 using Entities.Sistema;
+using Entities;
 
 namespace InterfaceUser.Login {
     public partial class Frmlogin : Form {
@@ -62,6 +63,10 @@ namespace InterfaceUser.Login {
             }
 
             bFlagLogin = true;
+
+            Sessao.Usuario = new Entities.Entidade(item.codigo, item.login);
+            Sessao.TipoUsuario = new TipoUsuarioNG().BuscarTipoUsuariodoUsuario(item.codigo);
+
             this.Close();
         }
     }

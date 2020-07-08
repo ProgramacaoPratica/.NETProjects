@@ -86,6 +86,7 @@
             // 
             this.txtsenha.Location = new System.Drawing.Point(743, 361);
             this.txtsenha.Name = "txtsenha";
+            this.txtsenha.PasswordChar = '*';
             this.txtsenha.Size = new System.Drawing.Size(185, 20);
             this.txtsenha.TabIndex = 4;
             // 
@@ -153,7 +154,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::InterfaceUser.Properties.Resources.fundo_login;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1055, 653);
+            this.ClientSize = new System.Drawing.Size(1051, 649);
             this.ControlBox = false;
             this.Controls.Add(this.btn_sair);
             this.Controls.Add(this.panel1);

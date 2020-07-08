@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexaoBaseDados.cs" />
+    <Compile Include="Pessoas\TipoUsuarioBD.cs" />
     <Compile Include="Pessoas\UsuarioBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

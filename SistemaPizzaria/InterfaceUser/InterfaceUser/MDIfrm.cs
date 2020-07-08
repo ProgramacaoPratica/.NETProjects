@@ -21,9 +21,17 @@ namespace InterfaceUser {
                 }
             }
 
+            mnsprincipal.Visible = false;
             var Frmlogin = new Frmlogin();
             Frmlogin.ShowDialog();
             if (!Frmlogin.bFlagLogin) Application.Exit();
+
+            mnsprincipal.Visible = true;
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace Entities.Enumeradores {
     public enum Status {
 
-        Ativo, Inativo
+        Inativo = 0,
+        Ativo = 1,
+        Todos =2
     }
 }

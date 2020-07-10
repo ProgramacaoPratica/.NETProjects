@@ -96,13 +96,28 @@
     <Compile Include="MDIfrm.Designer.cs">
       <DependentUpon>MDIfrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pessoas\FrmCadUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pessoas\FrmCadUsuario.Designer.cs">
+      <DependentUpon>FrmCadUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\Cstatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Cstatus.Designer.cs">
+      <DependentUpon>Cstatus.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Login\Frmlogin.resx">
       <DependentUpon>Frmlogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIfrm.resx">
       <DependentUpon>MDIfrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pessoas\FrmCadUsuario.resx">
+      <DependentUpon>FrmCadUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -114,6 +129,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\Cstatus.resx">
+      <DependentUpon>Cstatus.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,4 +1,6 @@
 ﻿using DataBase.Pessoas;
+using Entities.Entidades;
+using Entities.Enumeradores;
 using Entities.Pessoas;
 using System.Collections.Generic;
 
@@ -7,18 +9,21 @@ namespace Business.Pessoas {
 
         private readonly UsuarioBD _bd;
 
-        
+
         public UsuarioNG()
         {
             _bd = new UsuarioBD();
         }
-        
-        public List<Usuario> ListarUsuarios()
+
+        public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {
-            return _bd.ListarUsuarios();
+            return _bd.ListarEntidadesViewPesquisa(status);
         }
 
-        
 
+        public List<Usuario> ListarUsuariosAtivos()
+        {
+            return _bd.ListarUsuariosAtivos();
+        }
     }
 }

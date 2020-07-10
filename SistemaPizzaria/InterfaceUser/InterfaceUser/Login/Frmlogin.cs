@@ -25,7 +25,7 @@ namespace InterfaceUser.Login {
 
         private void CarregarUsuarios()
         {
-            var lista = new UsuarioNG().ListarUsuarios();
+            var lista = new UsuarioNG().ListarUsuariosAtivos();
             if (lista.Count > 0)
             {
                 foreach (var item in lista)

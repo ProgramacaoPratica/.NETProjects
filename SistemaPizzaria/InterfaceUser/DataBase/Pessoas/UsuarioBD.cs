@@ -25,7 +25,7 @@ namespace DataBase.Pessoas {
                                            FROM usuario";
 
                     if (status != Status.Todos)
-                        query += "WHERE situacao = @situacao";
+                        query += " WHERE situacao = @situacao";
 
                     comando.CommandText = query;
                     if (status != Status.Todos)

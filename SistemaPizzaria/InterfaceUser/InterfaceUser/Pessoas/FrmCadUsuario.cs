@@ -1,12 +1,6 @@
 ﻿using Business.Pessoas;
+using InterfaceUser.Pesquisa;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InterfaceUser.Pessoas {
@@ -27,11 +21,16 @@ namespace InterfaceUser.Pessoas {
             }
 
             // Passar a lista para o formulário de pesquisa
+            var FrmPesquisa = new FrmPesquisaGenerica("Listagem de Usuários", Entities.Enumeradores.Status.Todos);
+            FrmPesquisa.lista = lista;
+            FrmPesquisa.ShowDialog();
         }
 
         private void btnBuscaTipoUsuario_Click(object sender, EventArgs e)
         {
             
         }
+
+       
     }
 }

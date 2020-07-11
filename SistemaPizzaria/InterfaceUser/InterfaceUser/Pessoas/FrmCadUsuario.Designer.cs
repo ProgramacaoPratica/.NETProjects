@@ -242,6 +242,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Cadastro de usuários";
+        
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -96,6 +96,13 @@
     <Compile Include="MDIfrm.Designer.cs">
       <DependentUpon>MDIfrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Funcoes.cs" />
+    <Compile Include="Pesquisa\FrmPesquisaGenerica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisa\FrmPesquisaGenerica.Designer.cs">
+      <DependentUpon>FrmPesquisaGenerica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pessoas\FrmCadUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MDIfrm.resx">
       <DependentUpon>MDIfrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisa\FrmPesquisaGenerica.resx">
+      <DependentUpon>FrmPesquisaGenerica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pessoas\FrmCadUsuario.resx">
       <DependentUpon>FrmCadUsuario.cs</DependentUpon>

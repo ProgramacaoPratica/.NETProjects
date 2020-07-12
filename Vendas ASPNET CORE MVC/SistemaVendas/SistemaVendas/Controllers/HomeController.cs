@@ -4,10 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Sistema_de_Vendas.Models;
+using SistemaVendas.Models;
 
-namespace Sistema_de_Vendas.Controllers {
-    public class HomeController : Controller {
+namespace SistemaVendas.Controllers
+{
+    public class HomeController : Controller
+    {
         public IActionResult Index()
         {
             return View();

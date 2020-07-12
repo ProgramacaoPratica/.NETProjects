@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Sistema_de_Vendas {
-    public class Program {
+namespace SistemaVendas
+{
+    public class Program
+    {
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();

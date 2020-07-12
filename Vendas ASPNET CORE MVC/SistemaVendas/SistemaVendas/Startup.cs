@@ -9,9 +9,14 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using SistemaVendas.Data;
 
-namespace Sistema_de_Vendas {
-    public class Startup {
+
+namespace SistemaVendas
+{
+    public class Startup
+    {
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,6 +36,8 @@ namespace Sistema_de_Vendas {
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<SistemaVendasContext>(options => options.UseMySql(Configuration.GetConnectionString("SistemaVendasContext"), builder => builder.MigrationsAssembly("SistemaVendas")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,7 +46,8 @@ namespace Sistema_de_Vendas {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            } else
+            }
+            else
             {
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();

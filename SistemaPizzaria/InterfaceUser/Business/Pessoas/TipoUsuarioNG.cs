@@ -14,5 +14,10 @@ namespace Business.Pessoas {
         {
             return _bd.BuscarTipoUsuariodoUsuario(codigo);
         }
+
+        public TipoUsuario Buscar(int codigo)
+        {
+            return _bd.Buscar(codigo);
+        }
     }
 }

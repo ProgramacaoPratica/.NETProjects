@@ -26,6 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadUsuario));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -41,9 +42,9 @@
             this.txtTipoUsuario = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblmostratipou = new System.Windows.Forms.Label();
-            this.cstatus1 = new InterfaceUser.UserControls.Cstatus();
             this.btnBuscaTipoUsuario = new System.Windows.Forms.Button();
             this.btnbscusuario = new System.Windows.Forms.Button();
+            this.oUcsituacao = new InterfaceUser.UserControls.Cstatus();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +61,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Image = global::InterfaceUser.Properties.Resources.cancelar;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCancelar.Location = new System.Drawing.Point(226, 3);
             this.btnCancelar.Name = "btnCancelar";
@@ -69,10 +70,11 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Image = global::InterfaceUser.Properties.Resources.excluir;
+            this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnExcluir.Location = new System.Drawing.Point(115, 3);
             this.btnExcluir.Name = "btnExcluir";
@@ -81,10 +83,11 @@
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Image = global::InterfaceUser.Properties.Resources.confirmar;
+            this.btnConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.Image")));
             this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnConfirmar.Location = new System.Drawing.Point(4, 3);
             this.btnConfirmar.Name = "btnConfirmar";
@@ -93,6 +96,7 @@
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // label1
             // 
@@ -110,6 +114,7 @@
             this.txtCodigoUsuario.Name = "txtCodigoUsuario";
             this.txtCodigoUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtCodigoUsuario.TabIndex = 2;
+            this.txtCodigoUsuario.Validated += new System.EventHandler(this.txtCodigoUsuario_Validated);
             // 
             // label2
             // 
@@ -169,6 +174,7 @@
             this.txtTipoUsuario.Name = "txtTipoUsuario";
             this.txtTipoUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtTipoUsuario.TabIndex = 11;
+            this.txtTipoUsuario.Validating += new System.ComponentModel.CancelEventHandler(this.txtTipoUsuario_Validating);
             // 
             // label5
             // 
@@ -188,16 +194,9 @@
             this.lblmostratipou.TabIndex = 14;
             this.lblmostratipou.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cstatus1
-            // 
-            this.cstatus1.Location = new System.Drawing.Point(518, 171);
-            this.cstatus1.Name = "cstatus1";
-            this.cstatus1.Size = new System.Drawing.Size(220, 69);
-            this.cstatus1.TabIndex = 15;
-            // 
             // btnBuscaTipoUsuario
             // 
-            this.btnBuscaTipoUsuario.Image = global::InterfaceUser.Properties.Resources.busca;
+            this.btnBuscaTipoUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscaTipoUsuario.Image")));
             this.btnBuscaTipoUsuario.Location = new System.Drawing.Point(118, 145);
             this.btnBuscaTipoUsuario.Name = "btnBuscaTipoUsuario";
             this.btnBuscaTipoUsuario.Size = new System.Drawing.Size(37, 23);
@@ -207,7 +206,7 @@
             // 
             // btnbscusuario
             // 
-            this.btnbscusuario.Image = global::InterfaceUser.Properties.Resources.busca;
+            this.btnbscusuario.Image = ((System.Drawing.Image)(resources.GetObject("btnbscusuario.Image")));
             this.btnbscusuario.Location = new System.Drawing.Point(118, 42);
             this.btnbscusuario.Name = "btnbscusuario";
             this.btnbscusuario.Size = new System.Drawing.Size(37, 22);
@@ -215,12 +214,19 @@
             this.btnbscusuario.UseVisualStyleBackColor = true;
             this.btnbscusuario.Click += new System.EventHandler(this.btnbscusuario_Click);
             // 
+            // oUcsituacao
+            // 
+            this.oUcsituacao.Location = new System.Drawing.Point(518, 171);
+            this.oUcsituacao.Name = "oUcsituacao";
+            this.oUcsituacao.Size = new System.Drawing.Size(220, 69);
+            this.oUcsituacao.TabIndex = 15;
+            // 
             // FrmCadUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 327);
-            this.Controls.Add(this.cstatus1);
+            this.Controls.Add(this.oUcsituacao);
             this.Controls.Add(this.lblmostratipou);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnBuscaTipoUsuario);
@@ -242,7 +248,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Cadastro de usuários";
-        
+            this.Load += new System.EventHandler(this.FrmCadUsuario_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -268,6 +274,6 @@
         private System.Windows.Forms.Button btnBuscaTipoUsuario;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblmostratipou;
-        private UserControls.Cstatus cstatus1;
+        private UserControls.Cstatus oUcsituacao;
     }
 }

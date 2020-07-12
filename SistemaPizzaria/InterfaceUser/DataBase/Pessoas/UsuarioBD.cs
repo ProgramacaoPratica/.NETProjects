@@ -5,8 +5,10 @@ using System;
 using Entities.Enumeradores;
 using Entities.Entidades;
 
-namespace DataBase.Pessoas {
-    public class UsuarioBD {
+namespace DataBase.Pessoas
+{
+    public class UsuarioBD
+    {
 
         public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {
@@ -99,6 +101,52 @@ namespace DataBase.Pessoas {
             return listarUsuarios;
         }
 
-    }
+        public Usuario Buscar(int cod)
+        {
+            Usuario oUsuario = new Usuario();
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+                    comando.CommandText = "SELECT * FROM usuario where situacao = @codigo;";
+                    comando.Parameters.AddWithValue("codigo", cod);
+                    MySqlDataReader reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        oUsuario.Codigo = Convert.ToInt32(reader["codigo"]);
+                        oUsuario.TipoUsuario = new TipoUsuario(Convert.ToInt32(reader["codigo_tipo_usuario"]), string.Empty);
+                        oUsuario.Nome = reader["nome"].ToString();
+                        oUsuario.Login = reader["login"].ToString();
+                        oUsuario.Senha = reader["senha"].ToString();
+                        oUsuario.Status = (Status)Convert.ToInt16(reader["situacao"]);
+                        oUsuario.dtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
+                        oUsuario.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
+                    }
 
-}
+                }
+                catch (MySqlException mysqle)
+                {
+
+                    throw new Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+
+            }
+            return oUsuario;
+          
+            
+        }
+    }
+}    
+
+        
+
+    
+
+

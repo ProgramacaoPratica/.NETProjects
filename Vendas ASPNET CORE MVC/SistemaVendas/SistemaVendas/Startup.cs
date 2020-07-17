@@ -10,6 +10,7 @@ using SistemaVendas.Services;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using System.Collections.Generic;
+using SalesWebMvc.Services;
 
 namespace SistemaVendas
 {
@@ -40,6 +41,7 @@ namespace SistemaVendas
             services.AddScoped<SeedingService>();
             services.AddScoped<SellerService>();
             services.AddScoped<DepartmentService>();
+            services.AddScoped<SalesRecordService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,11 +4,60 @@ using Entities.Pessoas;
 using System;
 using Entities.Enumeradores;
 using Entities.Entidades;
+using DataBase.Modulos;
 
 namespace DataBase.Pessoas
 {
     public class UsuarioBD
     {
+        private readonly FuncoesBD BdFuncoes = new FuncoesBD();
+
+        public bool Inserir(Usuario oUsuario)
+        {
+            bool Isretorno = false;
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+
+
+
+                    comando.CommandText = (@"INSERT INTO usuario  VALUES (@codigo_tipo_usuario, @nome, @login, @senha,@situacao, NOW(),@codigo_usr_alteracao)");
+
+
+                    comando.Parameters.AddWithValue("codigo_tipo_usuario", oUsuario.TipoUsuario.Codigo);
+                    comando.Parameters.AddWithValue("nome", oUsuario.Nome);
+                    comando.Parameters.AddWithValue("login", oUsuario.Login);
+                    comando.Parameters.AddWithValue("senha", oUsuario.Senha);
+                    comando.Parameters.AddWithValue("situacao", (int)oUsuario.Status);
+                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oUsuario.CodigoUsrAlteracao);
+
+                    int valorRetorno = comando.ExecuteNonQuery();
+
+                    if (valorRetorno < 1)
+                        Isretorno = false;
+                    else
+                        Isretorno = true;
+
+
+                }
+                catch (MySqlException mysqle)
+                {
+
+                    throw new Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+
+            return Isretorno;
+        }
 
         public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {
@@ -139,14 +188,19 @@ namespace DataBase.Pessoas
 
             }
             return oUsuario;
-          
-            
+
+
+        }
+
+        public int BuscarProximoCodigo()
+        {
+            return BdFuncoes.BuscaCodigo("SHOW TABLE STATUS LIKE 'usuario'");
         }
     }
-}    
+}
 
-        
 
-    
+
+
 
 

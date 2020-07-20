@@ -1,10 +1,58 @@
-﻿using Entities.Pessoas;
+﻿using Entities.Entidades;
+using Entities.Enumeradores;
+using Entities.Pessoas;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 
 namespace DataBase.Pessoas
 {
-    public class TipoUsuarioBD {
+    public class TipoUsuarioBD
+    {
+
+        public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa()
+        {
+            var listaEntidades = new List<EntidadeViewPesquisa>();
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+
+                    string query = @"SELECT codigo, descricao, '1' AS situacao
+                                           FROM tipo_usuario";
+                    comando.CommandText = query;
+                    MySqlDataReader reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var oEntidade = new EntidadeViewPesquisa();
+                        oEntidade.Codigo = Convert.ToInt32(reader["codigo"].ToString());
+                        oEntidade.Descricao = reader["descricao"].ToString();
+                        oEntidade.Status = (Status)Convert.ToInt16(reader["situacao"]);
+
+                        listaEntidades.Add(oEntidade);
+                    }
+
+                }
+                catch (MySqlException mysqle)
+                {
+
+                    throw new Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+
+
+            }
+
+            return listaEntidades;
+        }
+
+
 
         public TipoUsuario BuscarTipoUsuariodoUsuario(int codigo)
         {
@@ -78,11 +126,10 @@ namespace DataBase.Pessoas
                 {
                     conexao.Close();
                 }
+
             }
 
             return tipousuario;
         }
-
-
     }
 }

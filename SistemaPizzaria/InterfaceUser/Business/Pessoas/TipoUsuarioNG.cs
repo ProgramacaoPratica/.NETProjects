@@ -1,6 +1,7 @@
 ﻿using DataBase.Pessoas;
+using Entities.Entidades;
 using Entities.Pessoas;
-
+using System.Collections.Generic;
 
 namespace Business.Pessoas {
     public class TipoUsuarioNG {
@@ -9,6 +10,11 @@ namespace Business.Pessoas {
         public TipoUsuarioNG()
         {
             _bd = new TipoUsuarioBD();
+        }
+
+        public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa()
+        {
+            return _bd.ListarEntidadesViewPesquisa();
         }
         public TipoUsuario BuscarTipoUsuariodoUsuario(int codigo)
         {

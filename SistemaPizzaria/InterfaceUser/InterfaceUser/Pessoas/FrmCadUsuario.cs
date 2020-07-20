@@ -1,12 +1,16 @@
 ﻿using Business.Pessoas;
+using Entities;
+using Entities.Pessoas;
 using InterfaceUser.Modulos;
 using InterfaceUser.Pesquisa;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace InterfaceUser.Pessoas {
-    public partial class FrmCadUsuario : Form {
+namespace InterfaceUser.Pessoas
+{
+    public partial class FrmCadUsuario : Form
+    {
 
         private bool isNovo;
         public FrmCadUsuario()
@@ -41,7 +45,23 @@ namespace InterfaceUser.Pessoas {
 
         private void btnBuscaTipoUsuario_Click(object sender, EventArgs e)
         {
-            
+            var lista = new TipoUsuarioNG().ListarEntidadesViewPesquisa();
+            if(lista.Count < 1)
+            {
+                MessageBox.Show("Sem dados para exibir!", this.Text, MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
+            }
+
+            var frmpesquisa = new FrmPesquisaGenerica("Listagem dos tipos de usuários", Entities.Enumeradores.Status.Todos);
+            frmpesquisa.lista = lista;
+            frmpesquisa.ShowDialog();
+
+            var Iretorno = frmpesquisa.Iretorno;
+            if (Iretorno < 1) return;
+            txtTipoUsuario.Text= Iretorno.ToString();
+            txtTipoUsuario_Validating(txtTipoUsuario, new CancelEventArgs());
+            MascaraCampoCodigo.RetornarMascara(txtTipoUsuario, new EventArgs());
+            btnBuscaTipoUsuario.Focus();
         }
 
         private void txtCodigoUsuario_Validated(object sender, EventArgs e)
@@ -50,7 +70,7 @@ namespace InterfaceUser.Pessoas {
                 return;
 
             var oUsuario = new UsuarioNG().Buscar(Convert.ToInt32(txtCodigoUsuario.Text.Trim()));
-            if(oUsuario == null)
+            if (oUsuario == null)
             {
                 btnExcluir.Enabled = false;
                 return;
@@ -71,17 +91,28 @@ namespace InterfaceUser.Pessoas {
 
         public void LimparCampos()
         {
-
+            txtCodigoUsuario.Text = new UsuarioNG().BuscarProximoCodigo().ToString();
+            txtnomeUsuario.Text = string.Empty;
+            txtlogincadusuario.Text = string.Empty;
+            txtsenhaCadusuario.Text = string.Empty;
+            txtTipoUsuario.Text = string.Empty;
+            lblmostratipou.Text = string.Empty;
+            btnExcluir.Enabled = false;
+            oUcsituacao.InicializarSituacao(Entities.Enumeradores.Status.Ativo);
+            MascaraCampoCodigo.RetornarMascara(txtCodigoUsuario, new EventArgs());
+            MascaraCampoCodigo.RetornarMascara(txtTipoUsuario, new EventArgs());
+            isNovo = true;
+            Funcoes.selecionarCampo(txtnomeUsuario);
         }
 
         private void FrmCadUsuario_Load(object sender, EventArgs e)
         {
-
+            btnCancelar_Click(btnCancelar, new EventArgs());
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            LimparCampos();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -91,7 +122,47 @@ namespace InterfaceUser.Pessoas {
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
+            if (!VerificarCampos())
+                return;
+            var oUsuario = new Usuario();
+            var oUsuarioNG = new UsuarioNG();
+            oUsuario.Nome = txtnomeUsuario.Text.Trim();
+            oUsuario.Login = txtlogincadusuario.Text.Trim();
+            oUsuario.Senha = txtsenhaCadusuario.Text.Trim();
+            oUsuario.TipoUsuario.Codigo = Convert.ToInt32(txtTipoUsuario.Text.Trim());
+            oUsuario.Status = oUcsituacao._status;
+            oUsuario.CodigoUsrAlteracao = Sessao.Usuario.Codigo;
+            if (isNovo)
+            {
+                if (oUsuarioNG.Inserir(oUsuario))
+                {
+                    MessageBox.Show("Registro cadastrado com sucesso", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                }
+            }
+            else
+                    MessageBox.Show("Não foi possível cadastrar este registro", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
+        private bool VerificarCampos()
+        {
+            if (txtnomeUsuario.Text.Trim().Equals(string.Empty)){
+
+                MessageBox.Show("Você precisa informar o nome do usuário!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (txtlogincadusuario.Text.Trim().Equals(string.Empty)){
+                MessageBox.Show("Você precisa informar o loguin do usuário!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else if (txtsenhaCadusuario.Text.Trim().Equals(string.Empty)){
+                MessageBox.Show("Você precisa informar a senha do usuário!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (txtTipoUsuario.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você precisa informar o tipo do usuário!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return true;
         }
 
         private void txtTipoUsuario_Validating(object sender, CancelEventArgs e)
@@ -103,7 +174,7 @@ namespace InterfaceUser.Pessoas {
             }
 
             var oTipoUsuario = new TipoUsuarioNG().Buscar(Convert.ToInt32(txtCodigoUsuario.Text.Trim()));
-            if(oTipoUsuario == null)
+            if (oTipoUsuario == null)
             {
                 MessageBox.Show("Tipo de usuário não encontrado!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtTipoUsuario.Select();
@@ -112,5 +183,7 @@ namespace InterfaceUser.Pessoas {
 
             lblmostratipou.Text = oTipoUsuario.Descricao;
         }
+
+        
     }
 }

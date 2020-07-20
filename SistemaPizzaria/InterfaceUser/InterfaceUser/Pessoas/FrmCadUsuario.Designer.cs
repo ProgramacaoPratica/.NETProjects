@@ -128,7 +128,7 @@
             // txtnomeUsuario
             // 
             this.txtnomeUsuario.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtnomeUsuario.Location = new System.Drawing.Point(172, 44);
+            this.txtnomeUsuario.Location = new System.Drawing.Point(172, 48);
             this.txtnomeUsuario.Name = "txtnomeUsuario";
             this.txtnomeUsuario.Size = new System.Drawing.Size(540, 20);
             this.txtnomeUsuario.TabIndex = 6;
@@ -146,6 +146,7 @@
             this.txtsenhaCadusuario.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txtsenhaCadusuario.Location = new System.Drawing.Point(451, 87);
             this.txtsenhaCadusuario.Name = "txtsenhaCadusuario";
+            this.txtsenhaCadusuario.PasswordChar = '*';
             this.txtsenhaCadusuario.Size = new System.Drawing.Size(261, 20);
             this.txtsenhaCadusuario.TabIndex = 8;
             // 

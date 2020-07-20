@@ -30,5 +30,15 @@ namespace Business.Pessoas {
         {
             return _bd.Buscar(cod);
         }
+
+        public int BuscarProximoCodigo()
+        {
+            return _bd.BuscarProximoCodigo();
+        }
+
+        public bool Inserir(Usuario oUsuario)
+        {
+            return _bd.Inserir(oUsuario);
+        }
     }
 }

@@ -140,12 +140,16 @@ namespace InterfaceUser.Pessoas
                     LimparCampos();
                 }
             }
+            //Esse else está no lugar errado. Ele é o else do inserir, não é? 
             else
                     MessageBox.Show("Não foi possível cadastrar este registro", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private bool VerificarCampos()
         {
+            //Está fazendo diferente... 
+            //Cadê os returns false?
+            //Verifique a forma que uso nas aulas!
             if (txtnomeUsuario.Text.Trim().Equals(string.Empty)){
 
                 MessageBox.Show("Você precisa informar o nome do usuário!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
